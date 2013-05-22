@@ -1,0 +1,131 @@
+#
+# Cuckoo Tool (User Interface) for automating analysis of suspicious files
+#      by lain - 2013
+#
+#          .-"-.       
+#         /   6_6         
+#         \_  (__\       
+#         //   \\        
+#        ((     ))            
+#   ======""===""======
+#           |||              
+#           |||                  
+#           '|'
+#
+ 
+
+Usage
+-----
+
+$ python cuckootool.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -s, --submit          Submit a file/directory for analysis
+  -l, --tasklist        Returns list of tasks
+  -v, --view            Returns details on the file matching either the
+                        specified MD5 hash, SHA256 hash or ID
+  -r REMOVE, --remove=REMOVE
+                        Removes the given task from the database and deletes
+                        the results
+  -t TASKVIEW, --taskview=TASKVIEW
+                        Returns details on the task associated with the
+                        specified ID
+  -p TASKREPORT, --taskreport=TASKREPORT
+                        Returns the report associated with the specified task
+                        ID
+  -g GETFILE, --getfile=GETFILE
+                        Returns the binary content of the file matching the
+                        specified SHA256 hash
+  --machineview=MACHINEVIEW
+                        Returns details on the analysis machine associated
+                        with the given name
+  --machinelist         Returns a list with details on the analysis machines
+                        available to Cuckoo
+
+  Submit Options:
+    -f FILE, --file=FILE
+                        File path to submit
+    -d DIR, --dir=DIR   Directory path to submit
+    -u URL, --url=URL   URL to analyze
+
+  File/Directory Options [Optional]:
+    --package=PACKAGE   Analysis package to be used for the analysis
+    --timeout=TIMEOUT   Priority to assign to the task (1-3)
+    --options=OPTIONS   Options to pass to the analysis package
+    --machine=MACHINE   Machine name to use for the analysis
+    --platform=PLATFORM
+                        Name of the platform to select the analysis machine
+                        (windows/darwin/linux)
+    --custom=CUSTOM     Custom string to pass over the analysis and the
+                        processing/reporting modules
+    --memory            Enable the creation of a full memory dump of the
+                        analysis machine
+    --enforce_timeout   Enable to enforce the execution for the full timeout
+                        value
+
+  View Files Options:
+    --md5=MD5           File md5
+    --sha256=SHA256     File sha256
+    --id=ID             File ID
+
+
+
+NOTE: CuckooTool uses REST API by default (localhost:8090)
+      Change host:port on cuckooapi.py file
+
+
+Examples
+--------
+
+   Submit a local binary:
+
+	$ python cuckooanalysis.py -s --file=/tmp/bin.exe
+
+   Submit a local binary and take a full memory dump of the analysis machine to be run on virtual machine cuckoo3:
+
+        $ python cuckooanalysis.py -s --file=/tmp/bin.exe --memory --machine=cuckoo3 
+
+   Submit a directory of binaries:
+
+        $ python cuckooanalysis.py -s --dir=/tmp/
+
+   Submit URL:
+
+        $ python cuckooanalysis.py -s --url=http://www.malicious.site
+
+   Tasks List:
+
+	$ python cuckooanalysis.py --tasklist 
+
+   Task View:
+
+	$ python cuckooanalysis.py --taskview=2
+
+   Delete Task:
+
+	$ python cuckooanalysis.py --remove=1
+
+   File View:
+
+	$ python cuckooanalysis.py --view --id=5
+	$ python cuckooanalysis.py --view --md5=d1f9fba807a3b6f75a6ed1c6c47ce375
+        $ python cuckooanalysis.py --view --sha256=490c68ac770d7b7ffe39fd2bd026f2c6063ead41e7be2bc1c391adb7a7bf
+
+   Get File:
+
+       $ python cuckooanalysis.py -g <SHA256>
+
+   Task Report:
+
+       $ python cuckooanalysis.py --taskreport=1
+
+   Machines View:
+
+      $ python cuckooanalysis.py --machineview cuckoo1
+
+   Machines List:
+
+      $ python cuckooanalysis.py --machinelist
+
+
