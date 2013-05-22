@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Cuckootool by lain77z</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Cuckootool</h1>
+        <p class="header">User Interface for automating analysis of suspicious files</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/lain77z/CuckooTool/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/lain77z/CuckooTool/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/lain77z/CuckooTool">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/lain77z">lain77z</a></p>
+
+
+      </header>
+      <section>
+        <p>Submit a local binary:</p>
+
+<pre><code>    $ python cuckooanalysis.py -s --file=/tmp/bin.exe
+</code></pre>
+
+<p>Submit a local binary and take a full memory dump of the analysis machine to be run on virtual machine cuckoo3:</p>
+
+<pre><code>    $ python cuckooanalysis.py -s --file=/tmp/bin.exe --memory --machine=cuckoo3 
+</code></pre>
+
+<p>Submit a directory of binaries:</p>
+
+<pre><code>    $ python cuckooanalysis.py -s --dir=/tmp/
+</code></pre>
+
+<p>Submit URL:</p>
+
+<pre><code>    $ python cuckooanalysis.py -s --url=http://www.malicious.site
+</code></pre>
+
+<p>Tasks List:</p>
+
+<pre><code>    $ python cuckooanalysis.py --tasklist 
+</code></pre>
+
+<p>Task View:</p>
+
+<pre><code>    $ python cuckooanalysis.py --taskview=2
+</code></pre>
+
+<p>Delete Task:</p>
+
+<pre><code>    $ python cuckooanalysis.py --remove=1
+</code></pre>
+
+<p>File View:</p>
+
+<pre><code>    $ python cuckooanalysis.py --view --id=5
+    $ python cuckooanalysis.py --view --md5=d1f9fba807a3b6f75a6ed1c6c47ce375
+    $ python cuckooanalysis.py --view --sha256=490c68ac770d7b7ffe39fd2bd026f2c6063ead41e7be2bc1c391adb7a7bf
+</code></pre>
+
+<p>Get File:</p>
+
+<pre><code>   $ python cuckooanalysis.py -g &lt;SHA256&gt;
+</code></pre>
+
+<p>Task Report:</p>
+
+<pre><code>   $ python cuckooanalysis.py --taskreport=1
+</code></pre>
+
+<p>Machines View:</p>
+
+<pre><code>  $ python cuckooanalysis.py --machineview cuckoo1
+</code></pre>
+
+<p>Machines List:</p>
+
+<pre><code>  $ python cuckooanalysis.py --machinelist
+</code></pre>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
