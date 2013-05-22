@@ -80,52 +80,52 @@ Examples
 
    Submit a local binary:
 
-	$ python cuckooanalysis.py -s --file=/tmp/bin.exe
+	$ python cuckootool.py -s --file=/tmp/bin.exe
 
    Submit a local binary and take a full memory dump of the analysis machine to be run on virtual machine cuckoo3:
 
-        $ python cuckooanalysis.py -s --file=/tmp/bin.exe --memory --machine=cuckoo3 
+        $ python cuckootool.py -s --file=/tmp/bin.exe --memory --machine=cuckoo3 
 
    Submit a directory of binaries:
 
-        $ python cuckooanalysis.py -s --dir=/tmp/
+        $ python cuckootool.py -s --dir=/tmp/
 
    Submit URL:
 
-        $ python cuckooanalysis.py -s --url=http://www.malicious.site
+        $ python cuckootool.py -s --url=http://www.malicious.site
 
    Tasks List:
 
-	$ python cuckooanalysis.py --tasklist 
+	$ python cuckootool.py --tasklist 
 
    Task View:
 
-	$ python cuckooanalysis.py --taskview=2
+	$ python cuckootool.py --taskview=2
 
    Delete Task:
 
-	$ python cuckooanalysis.py --remove=1
+	$ python cuckootool.py --remove=1
 
    File View:
 
-	$ python cuckooanalysis.py --view --id=5
-	$ python cuckooanalysis.py --view --md5=d1f9fba807a3b6f75a6ed1c6c47ce375
-        $ python cuckooanalysis.py --view --sha256=490c68ac770d7b7ffe39fd2bd026f2c6063ead41e7be2bc1c391adb7a7bf
+	$ python cuckootool.py --view --id=5
+	$ python cuckootool.py --view --md5=d1f9fba807a3b6f75a6ed1c6c47ce375
+        $ python cuckootool.py --view --sha256=490c68ac770d7b7ffe39fd2bd026f2c6063ead41e7be2bc1c391adb7a7bf
 
    Get File:
 
-       $ python cuckooanalysis.py -g <SHA256>
+       $ python cuckootool.py -g <SHA256>
 
    Task Report:
 
-       $ python cuckooanalysis.py --taskreport=1
+       $ python cuckootool.py --taskreport=1
 
    Machines View:
 
-      $ python cuckooanalysis.py --machineview cuckoo1
+      $ python cuckootool.py --machineview cuckoo1
 
    Machines List:
 
-      $ python cuckooanalysis.py --machinelist
+      $ python cuckootool.py --machinelist
 
 
