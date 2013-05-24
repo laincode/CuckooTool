@@ -38,22 +38,22 @@
 
 <p>Submit a local binary:</p>
 
-<pre><code>    $ python cuckootool.py -s --file=/tmp/bin.exe
+<pre><code>    $ python cuckootool.py -s --file /tmp/bin.exe
 </code></pre>
 
 <p>Submit a local binary and take a full memory dump of the analysis machine to be run on virtual machine cuckoo3:</p>
 
-<pre><code>    $ python cuckootool.py -s --file=/tmp/bin.exe --memory --machine=cuckoo3 
+<pre><code>    $ python cuckootool.py -s --file /tmp/bin.exe --memory --machine=cuckoo3 
 </code></pre>
 
 <p>Submit a directory of binaries:</p>
 
-<pre><code>    $ python cuckootool.py -s --dir=/tmp/
+<pre><code>    $ python cuckootool.py -s --dir /tmp/
 </code></pre>
 
 <p>Submit URL:</p>
 
-<pre><code>    $ python cuckootool.py -s --url=http://www.malicious.site
+<pre><code>    $ python cuckootool.py -s --url http://www.malicious.site
 </code></pre>
 
 <p>Tasks List:</p>
@@ -63,29 +63,29 @@
 
 <p>Task View:</p>
 
-<pre><code>    $ python cuckootool.py --taskview=2
+<pre><code>    $ python cuckootool.py --taskview 2
 </code></pre>
 
 <p>Delete Task:</p>
 
-<pre><code>    $ python cuckootool.py --remove=1
+<pre><code>    $ python cuckootool.py --remove 1
 </code></pre>
 
 <p>File View:</p>
 
-<pre><code>    $ python cuckootool.py --view --id=5
-    $ python cuckootool.py --view --md5=d1f9fba807a3b6f75a6ed1c6c47ce375
-    $ python cuckootool.py --view --sha256=490c68ac770d7b7ffe39fd2bd026f2c6063ead41e7be2bc1c391adb7a7bf
+<pre><code>    $ python cuckootool.py --view --id 5
+    $ python cuckootool.py --view --md5 d1f9fba807a3b6f75a6ed1c6c47ce375
+    $ python cuckootool.py --view --sha256 490c68ac770d7b7ffe39fd2bd026f2c6063ead41e7be2bc1c391adb7a7bf
 </code></pre>
 
 <p>Get File:</p>
 
-<pre><code>   $ python cuckootool.py -g &lt;SHA256&gt;
+<pre><code>   $ python cuckootool.py --getfile &lt;SHA256&gt;
 </code></pre>
 
 <p>Task Report:</p>
 
-<pre><code>   $ python cuckootool.py --taskreport=1
+<pre><code>   $ python cuckootool.py --report 1
 </code></pre>
 
 <p>Machines View:</p>
