@@ -337,6 +337,27 @@ class CuckooMain:
             print "Locked changed on: ", result["machine"].get("locked_changed_on")
             print "-------------------------------------------"
 
+    def isvalidMachine(self,machine):
+        api = cuckooapi.Api()
+        result = api.machinesList()
+        if result is "TO" or result is None:
+            print "Error - Connection timeout"
+        elif result is "SE":
+            print "Error - Server Error"
+        elif result is "KO":
+            print "Error - Non controlled error"
+        else:
+            machineslist = result["machines"]
+            valid = False
+            if len(machineslist) == 0:
+                return valid
+            else:
+                for m in machineslist:
+                   name = m.get("name")
+                   if name == machine:
+                       valid = True
+                return valid
+                    
 
 if __name__ == "__main__":
 
@@ -401,7 +422,11 @@ if __name__ == "__main__":
                 if options.options is not None:
                     option = options.options
                 if options.machine is not None:
-                    machine = options.machine
+                    if cuckoo.isvalidMachine(options.machine) is True:
+                        machine = options.machine
+                    else:
+                        print "Error - Machine name is not valid"
+                        sys.exit(1)
                 if options.platform is not None:
                     platform = options.platform
                 if options.custom is not None:
@@ -423,7 +448,11 @@ if __name__ == "__main__":
                 if options.options is not None:
                     option = options.options
                 if options.machine is not None:
-                    machine = options.machine
+                    if cuckoo.isvalidMachine(options.machine) is True:
+                        machine = options.machine
+                    else:
+                        print "Error - Machine name is not valid"
+                        sys.exit(1)
                 if options.platform is not None:
                     platform = options.platform
                 if options.custom is not None:
@@ -444,7 +473,11 @@ if __name__ == "__main__":
             if options.options is not None:
                 option = options.options
             if options.machine is not None:
-                machine = options.machine
+                if cuckoo.isvalidMachine(options.machine) is True:
+                    machine = options.machine
+                else:
+                    print "Error - Machine name is not valid"
+                    sys.exit(1)
             if options.platform is not None:
                 platform = options.platform
             if options.custom is not None:
