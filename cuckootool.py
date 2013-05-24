@@ -445,7 +445,12 @@ if __name__ == "__main__":
                 if options.package is not None:
                     package = options.package
                 if options.timeout is not None:
-                    timeout = options.timeout
+                    try:
+                        (options.timeout == int(options.timeout))
+                        timeout = options.timeout
+                    except ValueError:
+                        print "Error - Timeout is not valid integer value"
+                        sys.exit(1)
                 if options.options is not None:
                     option = options.options
                 if options.machine is not None:
@@ -479,7 +484,12 @@ if __name__ == "__main__":
                 if options.package is not None:
                     package = options.package
                 if options.timeout is not None:
-                    timeout = options.timeout
+                    try:
+                        (options.timeout == int(options.timeout))
+                        timeout = options.timeout
+                    except ValueError:
+                        print "Error - Timeout is not valid integer value"
+                        sys.exit(1)
                 if options.options is not None:
                     option = options.options
                 if options.machine is not None:
@@ -512,7 +522,12 @@ if __name__ == "__main__":
             if options.package is not None:
                 package = options.package
             if options.timeout is not None:
-                timeout = options.timeout
+                try:
+                    (options.timeout == int(options.timeout))
+                    timeout = options.timeout
+                except ValueError:
+                    print "Error - Timeout is not valid integer value"
+                    sys.exit(1)
             if options.options is not None:
                 option = options.options
             if options.machine is not None:
