@@ -25,50 +25,44 @@ Options:
   -l, --tasklist        Returns list of tasks
   -v, --view            Returns details on the file matching either the
                         specified MD5 hash, SHA256 hash or ID
-  -r REMOVE, --remove=REMOVE
-                        Removes the given task from the database and deletes
+  --remove=REMOVE       Removes the given task from the database and deletes
                         the results
-  -t TASKVIEW, --taskview=TASKVIEW
-                        Returns details on the task associated with the
+  --taskview=TASKVIEW   Returns details on the task associated with the
                         specified ID
-  -p TASKREPORT, --taskreport=TASKREPORT
-                        Returns the report associated with the specified task
+  --report=TASKREPORT   Returns the report associated with the specified task
                         ID
-  -g GETFILE, --getfile=GETFILE
-                        Returns the binary content of the file matching the
+  --getfile=GETFILE     Returns the binary content of the file matching the
                         specified SHA256 hash
+  --machinelist         Returns a list with details on the analysis machines
+                        available to Cuckoo
   --machineview=MACHINEVIEW
                         Returns details on the analysis machine associated
                         with the given name
-  --machinelist         Returns a list with details on the analysis machines
-                        available to Cuckoo
 
   Submit Options:
-    -f FILE, --file=FILE
-                        File path to submit
-    -d DIR, --dir=DIR   Directory path to submit
-    -u URL, --url=URL   URL to analyze
+    --file=FILE         File path to submit
+    --dir=DIR           Directory path to submit
+    --url=URL           URL to analyze
 
   File/Directory Options [Optional]:
     --package=PACKAGE   Analysis package to be used for the analysis
     --timeout=TIMEOUT   Priority to assign to the task (1-3)
     --options=OPTIONS   Options to pass to the analysis package
     --machine=MACHINE   Machine name to use for the analysis
-    --platform=PLATFORM
-                        Name of the platform to select the analysis machine
-                        (windows/darwin/linux)
     --custom=CUSTOM     Custom string to pass over the analysis and the
                         processing/reporting modules
     --memory            Enable the creation of a full memory dump of the
                         analysis machine
     --enforce_timeout   Enable to enforce the execution for the full timeout
                         value
+    --platform=PLATFORM
+                        Name of the platform to select the analysis machine
+                        (windows/darwin/linux)
 
   View Files Options:
     --md5=MD5           File md5
     --sha256=SHA256     File sha256
     --id=ID             File ID
-
 
 
 NOTE: CuckooTool uses REST API by default (localhost:8090)
@@ -80,19 +74,19 @@ Examples
 
    Submit a local binary:
 
-	$ python cuckootool.py -s --file=/tmp/bin.exe
+	$ python cuckootool.py -s --file /tmp/bin.exe
 
    Submit a local binary and take a full memory dump of the analysis machine to be run on virtual machine cuckoo3:
 
-        $ python cuckootool.py -s --file=/tmp/bin.exe --memory --machine=cuckoo3 
+        $ python cuckootool.py -s --file /tmp/bin.exe --memory --machine=cuckoo3 
 
    Submit a directory of binaries:
 
-        $ python cuckootool.py -s --dir=/tmp/
+        $ python cuckootool.py -s --dir /tmp/
 
    Submit URL:
 
-        $ python cuckootool.py -s --url=http://www.malicious.site
+        $ python cuckootool.py -s --url http://www.malicious.site
 
    Tasks List:
 
@@ -100,25 +94,25 @@ Examples
 
    Task View:
 
-	$ python cuckootool.py --taskview=2
+	$ python cuckootool.py --taskview 2
 
    Delete Task:
 
-	$ python cuckootool.py --remove=1
+	$ python cuckootool.py --remove 1
 
    File View:
 
-	$ python cuckootool.py --view --id=5
-	$ python cuckootool.py --view --md5=d1f9fba807a3b6f75a6ed1c6c47ce375
-        $ python cuckootool.py --view --sha256=490c68ac770d7b7ffe39fd2bd026f2c6063ead41e7be2bc1c391adb7a7bf
+	$ python cuckootool.py --view --id 5
+	$ python cuckootool.py --view --md5 d1f9fba807a3b6f75a6ed1c6c47ce375
+        $ python cuckootool.py --view --sha256 490c68ac770d7b7ffe39fd2bd026f2c6063ead41e7be2bc1c391adb7a7bf
 
    Get File:
 
-       $ python cuckootool.py -g <SHA256>
+       $ python cuckootool.py --getfile <SHA256>
 
    Task Report:
 
-       $ python cuckootool.py --taskreport=1
+       $ python cuckootool.py --report=1
 
    Machines View:
 
