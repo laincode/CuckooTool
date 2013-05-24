@@ -358,6 +358,33 @@ class CuckooMain:
                        valid = True
                 return valid
                     
+    def isvalidPlatform(self,platform):
+        valid = False
+        if platform == "windows" or platform == "darwin" or platform == "linux":    
+           valid = True
+        return valid
+
+    def isavailablePlatform(self,platform):
+        api = cuckooapi.Api()
+        result = api.machinesList()
+        if result is "TO" or result is None:
+            print "Error - Connection timeout"
+        elif result is "SE":
+            print "Error - Server Error"
+        elif result is "KO":
+            print "Error - Non controlled error"
+        else:
+            machineslist = result["machines"]
+            valid = False
+            if len(machineslist) == 0:
+                return valid
+            else:
+                for m in machineslist:
+                   name = m.get("platform")
+                   if name == platform:
+                       valid = True
+                return valid
+
 
 if __name__ == "__main__":
 
@@ -428,7 +455,15 @@ if __name__ == "__main__":
                         print "Error - Machine name is not valid"
                         sys.exit(1)
                 if options.platform is not None:
-                    platform = options.platform
+                    if cuckoo.isvalidPlatform(options.platform) is True:
+                        if cuckoo.isavailablePlatform(options.platform) is True:   
+                            platform = options.platform
+                        else:
+                            print "Error - Platform type is not available. Try another one."
+                            sys.exit(1)
+                    else:
+                        print "Error - Platform name is not valid"
+                        sys.exit(1) 
                 if options.custom is not None:
                     custom = options.custom
                 if options.memory is True:
@@ -454,7 +489,15 @@ if __name__ == "__main__":
                         print "Error - Machine name is not valid"
                         sys.exit(1)
                 if options.platform is not None:
-                    platform = options.platform
+                    if cuckoo.isvalidPlatform(options.platform) is True:
+                        if cuckoo.isavailablePlatform(options.platform) is True:
+                            platform = options.platform
+                        else:
+                            print "Error - Platform type is not available. Try another one."
+                            sys.exit(1)
+                    else:
+                        print "Error - Platform name is not valid"
+                        sys.exit(1)
                 if options.custom is not None:
                     custom = options.custom
                 if options.memory is True:
@@ -479,7 +522,15 @@ if __name__ == "__main__":
                     print "Error - Machine name is not valid"
                     sys.exit(1)
             if options.platform is not None:
-                platform = options.platform
+                if cuckoo.isvalidPlatform(options.platform) is True:
+                    if cuckoo.isavailablePlatform(options.platform) is True:
+                        platform = options.platform
+                    else:
+                        print "Error - Platform type is not available. Try another one."
+                        sys.exit(1)
+                else:
+                    print "Error - Platform name is not valid"
+                    sys.exit(1)
             if options.custom is not None:
                 custom = options.custom
             if options.memory is True:
