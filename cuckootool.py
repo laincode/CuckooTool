@@ -440,118 +440,52 @@ if __name__ == "__main__":
     cuckoo = CuckooMain()
 
     if options.submit != None:
+        if options.package is not None:
+            package = options.package
+        if options.timeout is not None:
+            try:
+                (options.timeout == int(options.timeout))
+                timeout = options.timeout
+            except ValueError:
+                print "Error - Timeout is not valid integer value"
+                sys.exit(1)
+        if options.options is not None:
+            option = options.options
+        if options.machine is not None:
+            if cuckoo.isvalidMachine(options.machine) is True:
+                machine = options.machine
+            else:
+                print "Error - Machine name is not valid"
+                sys.exit(1)
+        if options.platform is not None:
+            if cuckoo.isvalidPlatform(options.platform) is True:
+                if cuckoo.isavailablePlatform(options.platform) is True:
+                    platform = options.platform
+                else:
+                    print "Error - Platform type is not available. Try another one."
+                    sys.exit(1)
+            else:
+                print "Error - Platform name is not valid"
+                sys.exit(1)
+        if options.custom is not None:
+            custom = options.custom
+        if options.memory is True:
+            memory = options.memory
+        if options.enforce_timeout is True:
+            enforce_timeout = options.enforce_timeout 
         if options.file != None:
             if os.path.isfile(options.file):
-                if options.package is not None:
-                    package = options.package
-                if options.timeout is not None:
-                    try:
-                        (options.timeout == int(options.timeout))
-                        timeout = options.timeout
-                    except ValueError:
-                        print "Error - Timeout is not valid integer value"
-                        sys.exit(1)
-                if options.options is not None:
-                    option = options.options
-                if options.machine is not None:
-                    if cuckoo.isvalidMachine(options.machine) is True:
-                        machine = options.machine
-                    else:
-                        print "Error - Machine name is not valid"
-                        sys.exit(1)
-                if options.platform is not None:
-                    if cuckoo.isvalidPlatform(options.platform) is True:
-                        if cuckoo.isavailablePlatform(options.platform) is True:   
-                            platform = options.platform
-                        else:
-                            print "Error - Platform type is not available. Try another one."
-                            sys.exit(1)
-                    else:
-                        print "Error - Platform name is not valid"
-                        sys.exit(1) 
-                if options.custom is not None:
-                    custom = options.custom
-                if options.memory is True:
-                    memory = options.memory
-                if options.enforce_timeout is True:
-                    enforce_timeout = options.enforce_timeout
                 cuckoo.submitFile(file=options.file, package=package, timeout=timeout, options=option, machine=machine, platform=platform, custom=custom, memory=memory, enforce_timeout=enforce_timeout)
             else:
                 print "Error - File path doesn't exist"
                 sys.exit(1)     
         elif options.dir != None:
             if os.path.isdir(options.dir):
-                if options.package is not None:
-                    package = options.package
-                if options.timeout is not None:
-                    try:
-                        (options.timeout == int(options.timeout))
-                        timeout = options.timeout
-                    except ValueError:
-                        print "Error - Timeout is not valid integer value"
-                        sys.exit(1)
-                if options.options is not None:
-                    option = options.options
-                if options.machine is not None:
-                    if cuckoo.isvalidMachine(options.machine) is True:
-                        machine = options.machine
-                    else:
-                        print "Error - Machine name is not valid"
-                        sys.exit(1)
-                if options.platform is not None:
-                    if cuckoo.isvalidPlatform(options.platform) is True:
-                        if cuckoo.isavailablePlatform(options.platform) is True:
-                            platform = options.platform
-                        else:
-                            print "Error - Platform type is not available. Try another one."
-                            sys.exit(1)
-                    else:
-                        print "Error - Platform name is not valid"
-                        sys.exit(1)
-                if options.custom is not None:
-                    custom = options.custom
-                if options.memory is True:
-                    memory = options.memory
-                if options.enforce_timeout is True:
-                    enforce_timeout = options.enforce_timeout
                 cuckoo.submitDir(dir=options.dir, package=package, timeout=timeout, options=option, machine=machine, platform=platform, custom=custom, memory=memory, enforce_timeout=enforce_timeout)
             else:
                 print "Error - Directory path doesn't exist"
                 sys.exit(1)
         elif options.url != None:
-            if options.package is not None:
-                package = options.package
-            if options.timeout is not None:
-                try:
-                    (options.timeout == int(options.timeout))
-                    timeout = options.timeout
-                except ValueError:
-                    print "Error - Timeout is not valid integer value"
-                    sys.exit(1)
-            if options.options is not None:
-                option = options.options
-            if options.machine is not None:
-                if cuckoo.isvalidMachine(options.machine) is True:
-                    machine = options.machine
-                else:
-                    print "Error - Machine name is not valid"
-                    sys.exit(1)
-            if options.platform is not None:
-                if cuckoo.isvalidPlatform(options.platform) is True:
-                    if cuckoo.isavailablePlatform(options.platform) is True:
-                        platform = options.platform
-                    else:
-                        print "Error - Platform type is not available. Try another one."
-                        sys.exit(1)
-                else:
-                    print "Error - Platform name is not valid"
-                    sys.exit(1)
-            if options.custom is not None:
-                custom = options.custom
-            if options.memory is True:
-                memory = options.memory
-            if options.enforce_timeout is True:
-                enforce_timeout = options.enforce_timeout
             cuckoo.submitURL(url=options.url, package=package, timeout=timeout, options=option, machine=machine, platform=platform, custom=custom, memory=memory, enforce_timeout=enforce_timeout)
         else: 
             print "Review submit options"
