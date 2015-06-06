@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #
-# Copyright (c) 2013/2016 lain <lain@braincakes.org>
+# Copyright (c) 2013/2017 lain 
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
